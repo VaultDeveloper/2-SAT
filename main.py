@@ -1,4 +1,4 @@
-﻿#Vérifie qu'une variable peut être parser en entier
+#Vérifie qu'une variable peut être parser en entier
 def isInt(s):
     try :
         int(s)
@@ -6,6 +6,7 @@ def isInt(s):
     except ValueError:
         return False
 
+# Verifie que la formule est 2-SAT.
 # Chaque élément du tableau doit contenir 2 éléments (Ou).
 def isFormulaCorrect(T):
     retour = True;
@@ -29,11 +30,11 @@ def renverse(s):
         s = s.replace('!','');
     else:
         s = '!' + s;
-        return s;
+    return s;
 
 T = [['1','!2'],['3','4'],['!2','!3'],['4','!5'],['2','!5']];
 
-def grapheFromFormula(T):
+def graphe2_sat(T):
     # Verifie que la formule est 2-SAT
     if not(isFormulaCorrect(T)):
         return false;
@@ -50,4 +51,4 @@ def grapheFromFormula(T):
     show(g)
     return true;
 
-grapheFromFormula(T);
+graphe2_sat(T);
