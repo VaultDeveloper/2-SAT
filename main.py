@@ -1,4 +1,3 @@
-#Vérifie qu'une variable peut être parser en entier
 def isInt(s):
     try :
         int(s)
@@ -32,9 +31,7 @@ def renverse(s):
         s = '!' + s;
     return s;
 
-T = [['1','!2'],['3','4'],['!2','!3'],['4','!5'],['2','!5']];
-
-def grapheFromFormula(T):
+def graphe2_sat(T):
     # Verifie que la formule est 2-SAT
     if not(isFormulaCorrect(T)):
         return null;
@@ -47,8 +44,17 @@ def grapheFromFormula(T):
         g.add_path([renverse(T[i][0]),T[i][1]]);
         g.add_path([renverse(T[i][1]),T[i][0]]);
 
-    # Retourne le graphe
+    # Retourne le graphe le graphe
     return g;
 
-graphe = grapheFromFormula(T);
-show(graphe);
+def formule_valide(T):
+    if graphe2_sat(T)[0]:
+        g=graphe2_sat(T)[1];
+    # Liste de tous les composants fortements connexes
+    l = g.strongly_connected_components();
+    # Liste de tous les successeurs de 1er sommet de graphe g
+    temp = g.neighbors_out(g[0]);
+
+T = [['1','2'],['2','!3'],['!2','!4'],['2','4'],['4','1']];
+show(graphe2_sat(T));
+formule_valide(T);
