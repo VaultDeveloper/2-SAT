@@ -34,7 +34,7 @@ def renverse(s):
 
 T = [['1','!2'],['3','4'],['!2','!3'],['4','!5'],['2','!5']];
 
-def graphe2_sat(T):
+def grapheFromFormula(T):
     # Verifie que la formule est 2-SAT
     if not(isFormulaCorrect(T)):
         return false;
@@ -51,4 +51,4 @@ def graphe2_sat(T):
     show(g)
     return true;
 
-graphe2_sat(T);
+grapheFromFormula(T);
