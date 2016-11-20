@@ -47,14 +47,27 @@ def graphe2_sat(T):
     # Retourne le graphe le graphe
     return g;
 
-def formule_valide(T):
-    if graphe2_sat(T)[0]:
-        g=graphe2_sat(T)[1];
-    # Liste de tous les composants fortements connexes
-    l = g.strongly_connected_components();
-    # Liste de tous les successeurs de 1er sommet de graphe g
-    temp = g.neighbors_out(g[0]);
+def question3(formule, valeurs):
+    for i in range (0, len(formule)) :
+        variable1 = T[i][0]; valeur1 = True;
+        variable2 = T[i][1]; valeur2 = True;
 
-T = [['1','2'],['2','!3'],['!2','!4'],['2','4'],['4','1']];
+        if isInt(variable1):
+            valeur1 = valeurs[int(variable1)-1];
+        else :
+            valeur1 = not(valeurs[int(renverse(variable1))-1]);
+
+        if isInt(variable2):
+            valeur2 = valeurs[int(variable2)-1];
+        else :
+            valeur2 = not(valeurs[int(renverse(variable2))-1]);
+
+        if not(valeur1) or not(valeur2):
+            return False;
+
+    return True;
+
+T = [['1','!2'],['3','4'],['!2','!3'],['4','!5'],['2','!5']];
+T_affectation = [True, False, True, True, False];
 show(graphe2_sat(T));
-formule_valide(T);
+question3(T, T_affectation);
