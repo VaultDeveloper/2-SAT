@@ -37,7 +37,7 @@ T = [['1','!2'],['3','4'],['!2','!3'],['4','!5'],['2','!5']];
 def grapheFromFormula(T):
     # Verifie que la formule est 2-SAT
     if not(isFormulaCorrect(T)):
-        return false;
+        return null;
 
     # Fait le graphe avec les 2 premiers variables
     g = DiGraph({renverse(T[0][0]):{T[0][1]}, renverse(T[0][1]):{T[0][0]}});
@@ -47,8 +47,8 @@ def grapheFromFormula(T):
         g.add_path([renverse(T[i][0]),T[i][1]]);
         g.add_path([renverse(T[i][1]),T[i][0]]);
 
-    # Affiche le graphe
-    show(g)
-    return true;
+    # Retourne le graphe
+    return g;
 
-grapheFromFormula(T);
+graphe = grapheFromFormula(T);
+show(graphe);
